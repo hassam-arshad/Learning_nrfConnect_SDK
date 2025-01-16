@@ -1,0 +1,29 @@
+// To get started, press Ctrl+Space (or Option+Esc) to bring up the completion menu and view the available nodes.
+
+// You can also use the buttons in the sidebar to perform actions on nodes.
+// Actions currently available include:
+
+// * Enabling / disabling the node
+// * Adding the bus to a bus
+// * Removing the node
+// * Connecting ADC channels
+
+// For more help, browse the DeviceTree documentation at https://docs.zephyrproject.org/latest/guides/dts/index.html
+// You can also visit the nRF DeviceTree extension documentation at https://docs.nordicsemi.com/bundle/nrf-connect-vscode/page/guides/ncs_configure_app.html#devicetree-support-in-the-extension
+
+
+/ {
+    leds{
+        led4: led_4 {
+            gpios = <&gpio0 29 GPIO_ACTIVE_LOW>;
+            label = "RED LED";
+        };
+    };
+};
+
+// Here in overlay file if you have assigned a gpio which is already used on some other function then disable that first and use it then
+// to disable something just check its name and disable its status for example I am disabling I2C below
+
+&i2c0 {
+    status = "disabled";
+};
